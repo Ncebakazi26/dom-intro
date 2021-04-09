@@ -2,12 +2,12 @@
 var billItemTypeRadio = document.querySelector(".billItemTypeRadio")
 var callTotalTwo1= document.querySelector(".callTotalTwo")
 var smsTotalTwo1 = document.querySelector(".smsTotalTwo")
-var TotalTwo1 = document.querySelector(".TotalTwo")
+var TotalTwo1 = document.querySelector(".totalTwo")
 //get a reference to the add button
 var radioBillAddBtn = document.querySelector(".radioBillAddBtn")
 //create a variable that will keep track of the total bill
-var callsTotal = 0;
-var smsTotal = 0;
+var callsTotal1 = 0;
+var smsTotal1 = 0;
 //add an event listener for when the add button is pressed
 function BillTotal(){
     // get the value entered in the billType textfield
@@ -19,18 +19,18 @@ function BillTotal(){
 
     // update the correct total
     if (billItemType === "call"){
-        callsTotal += 2.75
+        callsTotal1 += 2.75
     }
     else if (billItemType=== "sms"){
-        smsTotal += 0.75;
+        smsTotal1 += 0.75;
     }
     
     //update the totals that is displayed on the screen.
-    callTotalTwo1.innerHTML = callsTotal.toFixed(2);
-    smsTotalTwo1.innerHTML = smsTotal.toFixed(2);
-    var totalCost1 = callsTotal + smsTotal;
+    callTotalTwo1.innerHTML = callsTotal1.toFixed(2);
+    smsTotalTwo1.innerHTML = smsTotal1.toFixed(2);
+    var totalCost1 = callsTotal1 + smsTotal1;
     TotalTwo1.innerHTML = totalCost1.toFixed(2);
-    console.log(TotalTwo1);
+    
 
      if (totalCost1 >= 50){
         TotalTwo1.classList.add("danger");

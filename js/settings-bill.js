@@ -30,6 +30,9 @@ function settingsBill2() {
     smsTotalSet = Number(smsCostSet.value);
     warning = warningSet.value;
     critical = criticalSet.value;
+    if(addBtn.disabled){
+     addBtn.disabled=false;    
+    }
     
 }
 updateSettingsBtn.addEventListener('click', settingsBill2);
@@ -54,9 +57,11 @@ function settingsBill() {
     smsTotalSettingsElem.innerHTML = smsTotals.toFixed(2);
     var Totals = callTotals + smsTotals;
     totalSettingsElem.innerHTML = Totals.toFixed(2);
-    if (Totals >= critical) {
+    if (Totals >= critical) { 
         totalSettingsElem.classList.add("danger")
+        addBtn.disabled=true; 
         totalSettingsElem.classList.remove("warning")
+
     }
     else if (Totals >= warning) {
         totalSettingsElem.classList.add("warning")

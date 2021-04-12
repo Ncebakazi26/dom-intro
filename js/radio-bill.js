@@ -30,7 +30,12 @@ function BillTotal(){
     smsTotalTwo1.innerHTML = smsTotal1.toFixed(2);
     var totalCost1 = callsTotal1 + smsTotal1;
     TotalTwo1.innerHTML = totalCost1.toFixed(2);
-    
+    if (totalCost1 < 50){
+        TotalTwo1.classList.remove("danger");
+    }
+    if (totalCost1 < 30){
+        TotalTwo1.classList.remove("warning");
+    }
 
      if (totalCost1 >= 50){
         TotalTwo1.classList.add("danger");

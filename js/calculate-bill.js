@@ -27,9 +27,15 @@ function calculateBtnClicked(){
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
-    if(roundedBillTotal>20 && roundedBillTotal<30){
+    if(roundedBillTotal<20){
+    billTotalElement.classList.remove("warning")   
+    }
+   if(roundedBillTotal<30) {
+    billTotalElement.classList.remove("danger")     
+    }
+    if(roundedBillTotal>=20 && roundedBillTotal<30){
     billTotalElement.classList.add("warning")  
-    }else if (roundedBillTotal>30) {
+    }else if (roundedBillTotal>=30) {
         billTotalElement.classList.add("danger")    
     }
 }

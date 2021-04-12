@@ -20,20 +20,20 @@ var addBtn = document.querySelector(".billBtn")
 //Totals = 0;
 callTotals = 0;
 smsTotals = 0;
+var totals = 0;
 //add an event listener for when the 'Update settings' button is pressed
 var callTotalSetting = 0;
 var smsTotalSet = 0;
 var warning = 0;
 var critical = 0;
 function settingsBill2() {
+    if(callCostSet.value && smsCostSet.value){
     callTotalSetting = Number(callCostSet.value);
     smsTotalSet = Number(smsCostSet.value);
     warning = warningSet.value;
     critical = criticalSet.value;
-    if(addBtn.disabled){
-     addBtn.disabled=false;    
+    addingAndRemoveClass()
     }
-    
 }
 updateSettingsBtn.addEventListener('click', settingsBill2);
 
@@ -43,31 +43,48 @@ function settingsBill() {
     // get the value entered in the billType textfield
     var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedRadioBtn2) {
-        var billItemTypeSet = checkedRadioBtn2.value
-    }
-    // update the correct total
-    if (billItemTypeSet === "call") {
-        callTotals += callTotalSetting;
-    }
-    if (billItemTypeSet === "sms") {
-        smsTotals += smsTotalSet;
+        if (totals < critical) {
+            var billItemTypeSet = checkedRadioBtn2.value
+
+            // update the correct total
+            if (billItemTypeSet === "call") {
+                callTotals += callTotalSetting;
+            }
+            if (billItemTypeSet === "sms") {
+                smsTotals += smsTotalSet;
+            }
+        }
     }
     //update the totals that is displayed on the screen.
     callTotalSettingsElem.innerHTML = callTotals.toFixed(2);
     smsTotalSettingsElem.innerHTML = smsTotals.toFixed(2);
-    var Totals = callTotals + smsTotals;
-    totalSettingsElem.innerHTML = Totals.toFixed(2);
-    if (Totals >= critical) { 
+    totals = callTotals + smsTotals;
+    totalSettingsElem.innerHTML = totals.toFixed(2);
+    addingAndRemoveClass()
+
+
+}
+
+
+function addingAndRemoveClass() {
+    if (totals >= critical) {
         totalSettingsElem.classList.add("danger")
-        addBtn.disabled=true; 
         totalSettingsElem.classList.remove("warning")
 
     }
-    else if (Totals >= warning) {
+    else if (totals >= warning) {
         totalSettingsElem.classList.add("warning")
         totalSettingsElem.classList.remove("danger")
     }
+    else {
+        totalSettingsElem.classList.remove("danger")
+        totalSettingsElem.classList.remove("warning")
+
+    }
+
 }
+
+
 addBtn.addEventListener('click', settingsBill);
 
 

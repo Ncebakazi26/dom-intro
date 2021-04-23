@@ -40,9 +40,9 @@ updateSettingsBtn.addEventListener('click', settingsBill2);
 //add an event listener for when the add button is pressed
 function settingsBill() {
     // get the value enter
-    var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-     var billItemTypeSet = checkedRadioBtn2.value;
-    settingsInst.callAndsmsSetting(billItemTypeSet);
+   // var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+     //var billItemTypeSet = checkedRadioBtn2.value;
+   // settingsInst.callAndsmsSetting(billItemTypeSet);
         
     
     //update the totals that is displayed on the screen.

@@ -39,18 +39,12 @@ function settingsBill2() {
 updateSettingsBtn.addEventListener('click', settingsBill2);
 //add an event listener for when the add button is pressed
 function settingsBill() {
-    // get the value entered in the billType textfield
+    // get the value enter
     var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    if (checkedRadioBtn2) {
-       settingsInst.makeCall()
-       settingsInst.sendSms()
-        var billItemTypeSet = checkedRadioBtn2.value
-
-            // update the correct total
-         settingsInst.getCallCost(billItemTypeSet)
-         settingsInst.getSmsCost(billItemTypeSet)
+     var billItemTypeSet = checkedRadioBtn2.value;
+    settingsInst.callAndsmsSetting(billItemTypeSet);
         
-    }
+    
     //update the totals that is displayed on the screen.
     callTotalSettingsElem.innerHTML = settingsInst.getTotalCallCost().toFixed(2);
     smsTotalSettingsElem.innerHTML = settingsInst.getTotalSmsCost().toFixed(2);
@@ -67,7 +61,6 @@ function addingAndRemoveClass() {
 }
 
 addBtn.addEventListener('click', settingsBill);
-
 
     // update the correct total
 

@@ -28,10 +28,9 @@ var warning = 0;
 var critical = 0;
 function settingsBill2() {
     if(callCostSet.value && smsCostSet.value){
-    factoryInstance.setSms(Number(smsCostSet.value))
-    factoryInstance.getSms()
-    callTotalSetting = Number(callCostSet.value);
-    warning = warningSet.value;
+    callTotalSetting=(Number(callCostSet.value))
+    c = Number(callCostSet.value);
+    warning = warningSet.value;smsCostSet
     critical = criticalSet.value;
     addingAndRemoveClass()
     }

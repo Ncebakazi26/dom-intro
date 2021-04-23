@@ -47,6 +47,18 @@ function BillWithSettings() {
          return smsCost;
    
      }
+     function callAndsmsSetting(){
+        var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+        if (checkedRadioBtn2) {
+            var billItemTypeSet=checkedRadioBtn2.value
+        if (billItemTypeSet === "call") {
+            return makeCall();
+        }
+        if (billItemTypeSet === "sms") {
+            return sendSms();
+        }
+     }
+    }
      function getTotal(){
     
          return callCost+smsCost;
@@ -79,6 +91,7 @@ function BillWithSettings() {
         makeCall,
         sendSms,
         classColor,
+        callAndsmsSetting,
 
         
     }

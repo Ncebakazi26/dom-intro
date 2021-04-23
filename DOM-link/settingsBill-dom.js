@@ -8,10 +8,11 @@ var callCostSet = document.querySelector(".callCostSetting")
 var smsCostSet = document.querySelector(".smsCostSetting")
 var warningSet = document.querySelector(".warningLevelSetting")
 var criticalSet = document.querySelector(".criticalLevelSetting")
-// get refences to all the settings fields
-var factoryInstance = factory()
-//get a reference to the add button
 var addBtn = document.querySelector(".billBtn")
+// get refences to all the settings fields
+var settingsInst = BillWithSettings()
+//get a reference to the add button
+
 //get a reference to the 'Update settings' button
 
 // create a variables that will keep track of all the settings
@@ -28,11 +29,10 @@ var warning = 0;
 var critical = 0;
 function settingsBill2() {
     if(callCostSet.value && smsCostSet.value){
-        factoryInstance.setSms(Number(smsCostSet.value))
-        factoryInstance.getSms()
-    callTotalSetting = Number(callCostSet.value);
-    warning = warningSet.value;
-    critical = criticalSet.value;
+     settingsInst.setSmsCost(Number(smsCostSet.value))
+     settingsInst.setCallCost (Number(callCostSet.value))
+     settingsInst.setWarning(warningSet.value);
+     settingsInst.setCritical(criticalSet.value);
     addingAndRemoveClass()
     }
 }
@@ -42,34 +42,30 @@ function settingsBill() {
     // get the value entered in the billType textfield
     var checkedRadioBtn2 = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedRadioBtn2) {
-        if (totals < critical) {
-            var billItemTypeSet = checkedRadioBtn2.value
+       settingsInst.makeCall()
+       settingsInst.sendSms()
+        var billItemTypeSet = checkedRadioBtn2.value
 
             // update the correct total
-            if (billItemTypeSet === "call") {
-                callTotals += callTotalSetting;
-            }
-            if (billItemTypeSet === "sms") {
-                smsTotals += smsTotalSet;
-            }
-        }
+         settingsInst.getCallCost(billItemTypeSet)
+         settingsInst.getSmsCost(billItemTypeSet)
+        
     }
     //update the totals that is displayed on the screen.
-    callTotalSettingsElem.innerHTML = callTotals.toFixed(2);
-    smsTotalSettingsElem.innerHTML = smsTotals.toFixed(2);
-    totals = callTotals + smsTotals;
-    totalSettingsElem.innerHTML = totals.toFixed(2);
+    callTotalSettingsElem.innerHTML = settingsInst.getTotalCallCost().toFixed(2);
+    smsTotalSettingsElem.innerHTML = settingsInst.getTotalSmsCost().toFixed(2);
+    totalSettingsElem.innerHTML = settingsInst.getTotal().toFixed(2);
     addingAndRemoveClass()
 }
 function addingAndRemoveClass() {
     
-        totalSettingsElem.classList.add("danger")
+        totalSettingsElem.classList.remove("danger")
         totalSettingsElem.classList.remove("warning")
-
-        totalSettingsElem.classList.add(factoryInstance.addClss())
+        totalSettingsElem.classList.add(settingsInst.classColor())
 
 
 }
+
 addBtn.addEventListener('click', settingsBill);
 
 

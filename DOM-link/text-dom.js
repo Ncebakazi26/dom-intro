@@ -11,8 +11,9 @@ var addToBillBtn = document.querySelector(".addToBillBtn")
 var textInst = TextBill()
 //add an event listener for when the add button is pressed
 function textBillTotal(){
+ var billTypeEntered = billTypeText.value.trim();
     // get the value entered in the billType textfield
-var text = textInst.smsAndcalls().getcallTotal().getsmsTotal();
+  textInst.smsAndcalls(billTypeEntered)
     
     //update the totals that is displayed on the screen.
     callsTotalElem.innerHTML = textInst.getcallTotal().toFixed(2);

@@ -56,10 +56,10 @@ function BillWithSettings() {
      }
      function classColor(){
         if(hasReachedCritical()){
-            return "red";
+            return "danger";
         }
          if(getTotal()>= getWarning()){
-             return "orange";
+             return "warning";
             }
        
 

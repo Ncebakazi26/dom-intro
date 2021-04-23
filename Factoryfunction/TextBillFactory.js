@@ -2,11 +2,11 @@ function TextBill(){
     var callsTotal = 0;
     var smsTotal=0;
     function smsAndcalls(billString){
-       // var billTypeEntered = billString.trim();
-        if ( billString=== "call"){
+     var billTypeEntered = billString.trim();
+        if (billTypeEntered === "call"){
             callsTotal += 2.75
         }
-        else if (billString === "sms"){
+        else if (billTypeEntered === "sms"){
             smsTotal += 0.75;
         }
     }

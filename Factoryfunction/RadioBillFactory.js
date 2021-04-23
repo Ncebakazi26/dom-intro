@@ -22,10 +22,10 @@ function RadioBill(){
         }
         function OrangeAndRed1(){
             if(getTotal1()>=30 && getTotal1()<=50){
-                return "Orange";
+                return "warning";
             }
             if(getTotal1()>=50){
-                return "Red";
+                return "danger";
             }
              }
     return{
